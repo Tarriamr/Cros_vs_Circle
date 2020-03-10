@@ -1,8 +1,11 @@
 package Model;
 
+import Controller.Options;
+
 public class BoardField {
-    private String choice;  // todo - connect with Board.getDecode()
-    private String[][] field = new String[9][9];
+    private String choice;  // todo - connect with Board.getDecode() or Board.getBoard()
+
+    private String[][] field = new String[Options.getSizeX() * 2 + 3][Options.getSizeY() * 2 + 3];
 
     public BoardField(String choice) {
         this.choice = choice;

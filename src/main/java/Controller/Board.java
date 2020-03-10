@@ -1,12 +1,21 @@
 package Controller;
 
 public class Board {
-    private String choice;
+    private static String choice;
+    private static int sizeX, sizeY;
+    private static String[][] board = new String[sizeX][sizeY];
     private int[] decode = new int[2];
-    private String[][] board = new String[3][3];
 
-    public Board(String choice) {
-        this.choice = choice;
+    public static void setChoice(String choice) {
+        Board.choice = choice;
+    }
+
+    public static void setSizeX() {
+        Board.sizeX = Options.getSizeX();
+    }
+
+    public static void setSizeY() {
+        Board.sizeY = Options.getSizeX();
     }
 
     public String[][] getBoard() {
@@ -14,7 +23,7 @@ public class Board {
     }
 
     public int[] getDecode() {
-        Decode decoder = new Decode(this.choice);
+        Decode decoder = new Decode(choice);
         return decoder.getDecode();
     }
 }
