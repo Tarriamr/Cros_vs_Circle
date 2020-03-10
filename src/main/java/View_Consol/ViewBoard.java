@@ -1,7 +1,5 @@
 package View_Consol;
 
-import Controller.Board;
-import Controller.Options;
 import Model.BoardField;
 
 public class ViewBoard {
