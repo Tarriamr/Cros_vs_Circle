@@ -1,11 +1,13 @@
 package Controller;
 
-public class Decode {
+public class  Decode {
     private String choice;
 
     public Decode(String choice) {
         this.choice = choice;
     }
+
+    //todo check choice(field ID) and UpperCase input
 
     public int[] getDecode() {
         char[] code = choice.toCharArray();

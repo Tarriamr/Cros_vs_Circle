@@ -1,19 +1,16 @@
 package Controller;
 
-public class Player {
-    private String nick;
-    private String playSymbol = "X";
+public interface Player {
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
+    String getNick();
 
-    public void setPlaySymbol(String playSymbol) {
-        this.playSymbol = playSymbol;
-    }
+    void setNick(String nick);
 
-    public Player(String playSymbol) {
-        this.playSymbol = playSymbol;
-        Board.setChoice(this.playSymbol);
-    }
+    String getPlaySymbol();
+
+    void setPlaySymbol(String playSymbol);
+
+    String getChoiceField();
+
+    void setChoiceField(String choiceField);
 }

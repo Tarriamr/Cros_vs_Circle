@@ -11,7 +11,7 @@ public class Board {
     }
 
     public static void setSizeRow() {
-        Board.sizeRow = Options.getSizeRow();
+        Board.sizeRow = Options.getSizeBoard().get("sizeRow");
     }
 
     public static void setSizeColumn() {
