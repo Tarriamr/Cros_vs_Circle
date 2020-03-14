@@ -17,7 +17,7 @@ public class Start {
         System.out.println("Hello player, what's your nickname?");
         System.out.print("   ");
         player1.setNick(new Scanner(System.in).nextLine());
-        System.out.println("What is the nickname of the other player?");
+        System.out.println("What is the nickname of the second player?");
         System.out.print("   ");
         player2.setNick(new Scanner((System.in)).nextLine());
 

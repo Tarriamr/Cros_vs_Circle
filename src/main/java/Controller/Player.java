@@ -10,7 +10,7 @@ public interface Player {
 
     void setPlaySymbol(String playSymbol);
 
-    String getChoiceField();
+    String getChoiceField(int row, int column);
 
-    void setChoiceField(String choiceField);
+    void setChoiceField(int row, int column);
 }

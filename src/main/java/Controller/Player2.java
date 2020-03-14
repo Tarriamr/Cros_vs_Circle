@@ -1,10 +1,9 @@
 package Controller;
 
 public class Player2 implements Player {
-    Board board = new Board();
-    private String nick = "Player 2";
-    private String playSymbol = "O";
-    private String choiceField = "";
+    private static String[][] board = new Board().getBoard();
+    private static String nick = "Player 2";
+    private static String playSymbol = "O";
 
     @Override
     public String getNick() {
@@ -13,7 +12,7 @@ public class Player2 implements Player {
 
     @Override
     public void setNick(String nick) {
-        this.nick = nick;
+        Player2.nick = nick;
     }
 
     @Override
@@ -23,20 +22,16 @@ public class Player2 implements Player {
 
     @Override
     public void setPlaySymbol(String playSymbol) {
-        this.playSymbol = playSymbol;
+        Player2.playSymbol = playSymbol;
     }
 
     @Override
-    public String getChoiceField() {
-        return choiceField;
+    public String getChoiceField(int row, int column) {
+        return board[row][column];
     }
 
     @Override
-    public void setChoiceField(String choiceField) {
-        this.choiceField = choiceField;
-    }
-
-    public Board getBoard() {
-        return board;
+    public void setChoiceField(int row, int column) {
+        Player2.board[row][column] = Player2.playSymbol;
     }
 }
