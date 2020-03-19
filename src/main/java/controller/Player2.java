@@ -1,9 +1,12 @@
-package Controller;
+package controller;
+
+import model.Board;
+import model.Player;
 
 public class Player2 implements Player {
-    private static String[][] board = new Board().getBoard();
     private static String nick = "Player 2";
     private static String playSymbol = "O";
+    private static String[][] board = new String[Board.getSizeRow()][Board.getSizeColumn()];
 
     @Override
     public String getNick() {
@@ -33,5 +36,10 @@ public class Player2 implements Player {
     @Override
     public void setChoiceField(int row, int column) {
         Player2.board[row][column] = Player2.playSymbol;
+    }
+
+    @Override
+    public String[][] getBoard() {
+        return board;
     }
 }

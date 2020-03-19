@@ -1,4 +1,4 @@
-package Controller;
+package model;
 
 public interface Player {
 
@@ -13,4 +13,6 @@ public interface Player {
     String getChoiceField(int row, int column);
 
     void setChoiceField(int row, int column);
+
+    String[][] getBoard();
 }
