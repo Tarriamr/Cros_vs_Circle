@@ -59,11 +59,6 @@ public class Start {
 
 
 
-
-
-
-
-
         System.out.print(secondPlayer.getNick() + ", now Your turn: ");
         play.nextMove(scanner.next());
         System.out.println("\n\n");
