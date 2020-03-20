@@ -1,15 +1,14 @@
 package controller.playPack;
 
-import controller.Play;
 import controller.Player1;
 import controller.Player2;
+import model.Board;
 import model.Player;
 
 public class NextPlayer {
-    private Player1 player1 = new Player1();
-    private Player2 player2 = new Player2();
-    private int player1Counter = 0;
-    private int player2Counter = 0;
+    private static Player1 player1 = new Player1();
+    private static Player2 player2 = new Player2();
+
 
     public Player nextPlayer() {
         if (getPlayer1Counter() > getPlayer2Counter()) {
@@ -17,22 +16,28 @@ public class NextPlayer {
         } else if (getPlayer1Counter() < getPlayer2Counter()) {
             return player1;
         } else {
-            return Play.getFirstPlayer();
+            return WhichPlayerStart.playerStart();
         }
     }
 
     public int getPlayer1Counter() {
-        for (String[] field :
-                player1.getBoard()) {
-            if (field != null) player1Counter += 1;
+        int player1Counter = 0;
+        for (int i = 0; i < Board.getSizeRow(); i++) {
+            for (int j = 0; j < Board.getSizeColumn(); j++) {
+                String field = player1.getChoiceField(i, j);
+                if (field != null) player1Counter += 1;
+            }
         }
         return player1Counter;
     }
 
     public int getPlayer2Counter() {
-        for (String[] field :
-                player2.getBoard()) {
-            if (field != null) player2Counter += 1;
+        int player2Counter = 0;
+        for (int i = 0; i < Board.getSizeRow(); i++) {
+            for (int j = 0; j < Board.getSizeColumn(); j++) {
+                String field = player2.getChoiceField(i, j);
+                if (field != null) player2Counter += 1;
+            }
         }
         return player2Counter;
     }

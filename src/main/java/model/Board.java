@@ -17,6 +17,9 @@ public class Board {
         sizeBoard.put("sizeColumn", sizeColumn);
     }
 
+    public Board() {
+    }
+
     public static int getCounter() {
         return counter;
     }
