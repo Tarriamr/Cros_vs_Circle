@@ -1,5 +1,7 @@
 package model;
 
+import controller.bugCatcher.IllegalMoveLenght;
+
 public class Decode {
     private String choice;
 
@@ -7,15 +9,14 @@ public class Decode {
         this.choice = choice.toUpperCase();
     }
 
-    public int[] getDecode() {
+    public int[] getDecode() throws IllegalMoveLenght {
         char[] code = choice.toCharArray();
         if (choice.length() == 2) {
             return new int[]{
                     code[0] - 65, code[1] - 49
             };
         } else {
-            System.out.println("The field number was entered incorrectly, insert it again.");
-            return new int[]{99, 99};
+            throw new IllegalMoveLenght();
         }
     }
 }

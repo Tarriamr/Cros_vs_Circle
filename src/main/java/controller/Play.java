@@ -1,6 +1,7 @@
 package controller;
 
 import controller.bugCatcher.IllegalBoardSize;
+import controller.bugCatcher.IllegalMoveLenght;
 import controller.playPack.Move;
 import controller.playPack.NextPlayer;
 import controller.playPack.WhichPlayerStart;
@@ -24,21 +25,21 @@ public class Play {
         return firstPlayer;
     }
 
-    public void firstMove(String playerMove) throws IllegalBoardSize {
+    public void firstMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
         Play play = new Play();
         int[] choice = play.bugMove(firstPlayer, playerMove);
         firstPlayer.setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    public void nextMove(String playerMove) throws IllegalBoardSize {
+    public void nextMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
         Play play = new Play();
         int[] choice = play.bugMove(secondPlayer, playerMove);
         secondPlayer.setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    private int[] bugMove(Player player, String playerMove) throws IllegalBoardSize {
+    private int[] bugMove(Player player, String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
         try {
             return move.playerMove(playerMove);
         } catch (IllegalBoardSize illegalBoardSize) {
