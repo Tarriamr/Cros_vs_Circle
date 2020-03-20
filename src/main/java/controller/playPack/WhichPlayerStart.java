@@ -1,22 +1,19 @@
 package controller.playPack;
 
-import controller.Player1;
-import controller.Player2;
-import model.Player;
+import controller.Play;
 
 import java.util.Random;
 
 public class WhichPlayerStart {
 
-    public static Player playerStart() {
+    public WhichPlayerStart() {
         Random random = new Random();
-        Player1 player1 = new Player1();
-        Player2 player2 = new Player2();
+        Play play = new Play();
 
         if (random.nextInt(2) % 2 == 0) {
-            return player1;
+            new Play().setPlayerOrder(play.getPlayer1(), play.getPlayer2());
         } else {
-            return player2;
+            new Play().setPlayerOrder(play.getPlayer2(), play.getPlayer1());
         }
     }
 }

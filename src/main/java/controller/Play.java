@@ -2,8 +2,6 @@ package controller;
 
 import controller.bugCatcher.IllegalBoardSize;
 import controller.bugCatcher.IllegalMoveLenght;
-import controller.playPack.Move;
-import controller.playPack.NextPlayer;
 import controller.playPack.WhichPlayerStart;
 import model.Board;
 import model.Player;
@@ -11,29 +9,42 @@ import model.Player;
 import java.util.Scanner;
 
 public class Play {
-    NextPlayer nextPlayer = new NextPlayer();
-    Scanner scanner = new Scanner(System.in);
-    Move move = new Move();
-    private Player firstPlayer = WhichPlayerStart.playerStart();
-    private Player secondPlayer = nextPlayer.nextPlayer();
 
-    public Player getSecondPlayer() {
-        return secondPlayer;
+    private Player1 player1;
+    private Player2 player2;
+    private Scanner scanner;
+    private static Player[] playerOrder;
+
+    public Play() {
+        this.player1 = new Player1();
+        this.player2 = new Player2();
+        this.scanner = new Scanner(System.in);
+        playerOrder = new Player[2];
     }
 
-    public Player getFirstPlayer() {
-        return firstPlayer;
+    public Player1 getPlayer1() {
+        return player1;
     }
+
+    public Player2 getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayerOrder(Player firstPlayer, Player secondPlayer) {
+        playerOrder[0] = firstPlayer;
+        playerOrder[1] = secondPlayer;
+    }
+
 
     public void firstMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
-        Play play = new Play();
+        Play play = new Play(whichPlayerStart);
         int[] choice = play.bugMove(firstPlayer, playerMove);
         firstPlayer.setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
     public void nextMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
-        Play play = new Play();
+        Play play = new Play(whichPlayerStart);
         int[] choice = play.bugMove(secondPlayer, playerMove);
         secondPlayer.setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);

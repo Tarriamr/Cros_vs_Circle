@@ -4,6 +4,7 @@ import controller.Play;
 import controller.Player1;
 import controller.Player2;
 import controller.bugCatcher.IllegalBoardSize;
+import controller.bugCatcher.IllegalMoveLenght;
 import controller.playPack.NextPlayer;
 import model.Player;
 
@@ -12,13 +13,13 @@ import java.util.Scanner;
 public class Start {
     private static Player1 player1 = new Player1();
     private static Player2 player2 = new Player2();
-    private static Play play = new Play();
+    private static Play play = new Play(whichPlayerStart);
     private static Player firstPlayer = play.getFirstPlayer();
     private static Player secondPlayer = play.getSecondPlayer();
     private static Scanner scanner = new Scanner(System.in);
     private static BoardField boardField = new BoardField();
 
-    public static void main(String[] args) throws IllegalBoardSize {
+    public static void main(String[] args) throws IllegalBoardSize, IllegalMoveLenght {
 
         System.out.println();
         System.out.println("        CROSS   VS   CIRCLE");
