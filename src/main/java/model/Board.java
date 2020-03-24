@@ -1,7 +1,6 @@
 package model;
 
-import controller.Player1;
-import controller.Player2;
+import controller.Play;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,15 +48,13 @@ public class Board {
     }
 
     private static void setBoard() {
-        Player1 player1 = new Player1();
-        Player2 player2 = new Player2();
 
         for (int i = 0; i < getSizeRow(); i++) {
             for (int j = 0; j < getSizeColumn(); j++) {
-                if (player1.getBoard()[i][j] == null) {
-                    board[i][j] = player2.getBoard()[i][j];
+                if (Play.getPlayer1().getBoard()[i][j] == null) {
+                    board[i][j] = Play.getPlayer2().getBoard()[i][j];
                 } else {
-                    board[i][j] = player1.getBoard()[i][j];
+                    board[i][j] = Play.getPlayer1().getBoard()[i][j];
                 }
             }
         }

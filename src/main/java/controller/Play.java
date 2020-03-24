@@ -2,63 +2,58 @@ package controller;
 
 import controller.bugCatcher.IllegalBoardSize;
 import controller.bugCatcher.IllegalMoveLenght;
-import controller.playPack.WhichPlayerStart;
+import controller.playPack.Move;
+import controller.playPack.PlayerOrder;
 import model.Board;
+import model.HumanPlayer;
 import model.Player;
 
 import java.util.Scanner;
 
 public class Play {
 
-    private Player1 player1;
-    private Player2 player2;
-    private Scanner scanner;
-    private static Player[] playerOrder;
+    private static Player player1= new HumanPlayer("player1", "X");
+    private static Player player2=new HumanPlayer("player2","O");
+
+    private Player[] playerOrder = PlayerOrder.getPlayerOrder();
+    private Scanner scanner= new Scanner(System.in);
 
     public Play() {
-        this.player1 = new Player1();
-        this.player2 = new Player2();
-        this.scanner = new Scanner(System.in);
-        playerOrder = new Player[2];
+        PlayerOrder.setPlayerOrder();
     }
 
-    public Player1 getPlayer1() {
+
+    public static Player getPlayer1() {
         return player1;
     }
 
-    public Player2 getPlayer2() {
+    public static Player getPlayer2() {
         return player2;
     }
 
-    public void setPlayerOrder(Player firstPlayer, Player secondPlayer) {
-        playerOrder[0] = firstPlayer;
-        playerOrder[1] = secondPlayer;
-    }
 
-
-    public void firstMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
-        Play play = new Play(whichPlayerStart);
-        int[] choice = play.bugMove(firstPlayer, playerMove);
-        firstPlayer.setChoiceField(choice[0], choice[1]);
+    public void firstMove(String playerMove) throws IllegalMoveLenght {
+        int[] choice = bugMove(PlayerOrder.getPlayerOrder()[0], playerMove);
+        PlayerOrder.getPlayerOrder()[0].setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    public void nextMove(String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
-        Play play = new Play(whichPlayerStart);
-        int[] choice = play.bugMove(secondPlayer, playerMove);
-        secondPlayer.setChoiceField(choice[0], choice[1]);
+    public void nextMove(String playerMove) throws IllegalMoveLenght {
+        int[] choice = bugMove(PlayerOrder.getPlayerOrder()[1], playerMove);
+        PlayerOrder.getPlayerOrder()[1].setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    private int[] bugMove(Player player, String playerMove) throws IllegalBoardSize, IllegalMoveLenght {
+    private int[] bugMove(Player player, String playerMove) throws IllegalMoveLenght {
+        Move move = new Move();
         try {
             return move.playerMove(playerMove);
-        } catch (IllegalBoardSize illegalBoardSize) {
+        } catch (IllegalBoardSize bug) {
             System.out.println(player.getNick() + " the field number entered is from outside the board, please enter a valid field number.");
-            return move.playerMove(scanner.next());
+            return bugMove(player, scanner.next());
         } catch (IllegalArgumentException bug) {
             System.out.println(player.getNick() + " the field entered is already taken, select another.");
-            return move.playerMove(scanner.next());
+            return bugMove(player, scanner.next());
         }
     }
 }
