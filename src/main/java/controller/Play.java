@@ -3,7 +3,9 @@ package controller;
 import controller.bugCatcher.IllegalBoardSize;
 import controller.bugCatcher.IllegalMoveLenght;
 import controller.playPack.Move;
+import controller.playPack.NextPlayer;
 import controller.playPack.PlayerOrder;
+import controller.playPack.Win;
 import model.Board;
 import model.HumanPlayer;
 import model.Player;
@@ -12,16 +14,23 @@ import java.util.Scanner;
 
 public class Play {
 
-    private static Player player1= new HumanPlayer("player1", "X");
-    private static Player player2=new HumanPlayer("player2","O");
-
-    private Player[] playerOrder = PlayerOrder.getPlayerOrder();
-    private Scanner scanner= new Scanner(System.in);
+    private static Player player1 = new HumanPlayer("player1", "X");
+    private static Player player2 = new HumanPlayer("player2", "O");
+    private Player nextPlayer;
+    private int counter = 1;
+    private Scanner scanner = new Scanner(System.in);
 
     public Play() {
         PlayerOrder.setPlayerOrder();
     }
 
+    public Player getNextPlayer() {
+        return nextPlayer;
+    }
+
+    public void setNextPlayer() {
+        this.nextPlayer = new NextPlayer().getNextPlayer();
+    }
 
     public static Player getPlayer1() {
         return player1;
@@ -31,6 +40,13 @@ public class Play {
         return player2;
     }
 
+    public int getCounter() {
+        return counter;
+    }
+
+    private void setCounter(int counter) {
+        this.counter = counter;
+    }
 
     public void firstMove(String playerMove) throws IllegalMoveLenght {
         int[] choice = bugMove(PlayerOrder.getPlayerOrder()[0], playerMove);
@@ -39,8 +55,12 @@ public class Play {
     }
 
     public void nextMove(String playerMove) throws IllegalMoveLenght {
-        int[] choice = bugMove(PlayerOrder.getPlayerOrder()[1], playerMove);
-        PlayerOrder.getPlayerOrder()[1].setChoiceField(choice[0], choice[1]);
+        Win win = new Win();
+        int[] choice = bugMove(getNextPlayer(), playerMove);
+        getNextPlayer().setChoiceField(choice[0], choice[1]);
+        if (win.getWin(getNextPlayer(), choice, Board.getSizeRow(), Board.getSizeColumn(), 3)) {
+            setCounter(0);
+        }
         Board.setCounter(Board.getCounter() - 1);
     }
 
