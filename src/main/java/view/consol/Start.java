@@ -10,6 +10,7 @@ public class Start {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        PlayerDialog playerDialog = new PlayerDialog();
         Play play = new Play();
         BoardField boardField = new BoardField();
 
@@ -30,9 +31,9 @@ public class Start {
             System.out.println(boardField.toString());
             System.out.println();
 
-            System.out.println("The game will start:   " + PlayerOrder.getPlayerOrder()[0].getNick());
+            System.out.println("The game will start:   " + PlayerOrder.getPlayerOrder()[0].getNick().toUpperCase());
             System.out.println();
-            System.out.print(PlayerOrder.getPlayerOrder()[0].getNick() + ", it's time for your move:   ");
+            System.out.print(PlayerOrder.getPlayerOrder()[0].getNick().toUpperCase() + ", it's time for Your move:   ");
             play.firstMove(scanner.next());
             System.out.println("\n\n");
         }
@@ -44,7 +45,7 @@ public class Start {
                 System.out.println();
                 play.setNextPlayer();
 
-                System.out.print(play.getNextPlayer().getNick() + ", now Your turn:   ");
+                System.out.print(play.getNextPlayer().getNick().toUpperCase() + playerDialog.getPlayerTurn());
                 play.nextMove(scanner.next());
                 counter = play.getCounter();
                 System.out.println("\n\n");
@@ -58,7 +59,8 @@ public class Start {
             if (play.getCounter() != 0) {
                 System.out.println("Congratulations!!! You both win !!!");
             } else {
-                System.out.println("Congratulations!!!   " + play.getNextPlayer().getNick() + "   wins !!!");
+                System.out.println("Congratulations!!!   " + play.getNextPlayer().getNick().toUpperCase() + "   wins !!!");
+                System.out.println("\n\n");
             }
         }
     }
