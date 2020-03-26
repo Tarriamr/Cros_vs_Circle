@@ -24,20 +24,20 @@ public class Play {
         PlayerOrder.setPlayerOrder();
     }
 
-    public Player getNextPlayer() {
-        return nextPlayer;
-    }
-
-    public void setNextPlayer() {
-        this.nextPlayer = new NextPlayer().getNextPlayer();
-    }
-
     public static Player getPlayer1() {
         return player1;
     }
 
     public static Player getPlayer2() {
         return player2;
+    }
+
+    public Player getNextPlayer() {
+        return nextPlayer;
+    }
+
+    public void setNextPlayer() {
+        this.nextPlayer = new NextPlayer().getNextPlayer();
     }
 
     public int getCounter() {
@@ -48,13 +48,13 @@ public class Play {
         this.counter = counter;
     }
 
-    public void firstMove(String playerMove) throws IllegalMoveLenght {
+    public void firstMove(String playerMove) {
         int[] choice = bugMove(PlayerOrder.getPlayerOrder()[0], playerMove);
         PlayerOrder.getPlayerOrder()[0].setChoiceField(choice[0], choice[1]);
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    public void nextMove(String playerMove) throws IllegalMoveLenght {
+    public void nextMove(String playerMove) {
         Win win = new Win();
         int[] choice = bugMove(getNextPlayer(), playerMove);
         getNextPlayer().setChoiceField(choice[0], choice[1]);
@@ -64,7 +64,7 @@ public class Play {
         Board.setCounter(Board.getCounter() - 1);
     }
 
-    private int[] bugMove(Player player, String playerMove) throws IllegalMoveLenght {
+    private int[] bugMove(Player player, String playerMove) {
         Move move = new Move();
         try {
             return move.playerMove(playerMove);
@@ -73,6 +73,9 @@ public class Play {
             return bugMove(player, scanner.next());
         } catch (IllegalArgumentException bug) {
             System.out.println(player.getNick() + " the field entered is already taken, select another.");
+            return bugMove(player, scanner.next());
+        } catch (IllegalMoveLenght bug) {
+            System.out.println(player.getNick() + " the field number entered is incorrect, please enter a valid field number.");
             return bugMove(player, scanner.next());
         }
     }

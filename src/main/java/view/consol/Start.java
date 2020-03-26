@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Start {
 
-    public static void main(String[] args) throws IllegalMoveLenght {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Play play = new Play();
         BoardField boardField = new BoardField();
@@ -39,7 +39,7 @@ public class Start {
         }
 
         {
-            int counter = 1;
+            int counter;
             do {
                 System.out.println(boardField.toString());
                 System.out.println();
@@ -56,9 +56,9 @@ public class Start {
             System.out.println(boardField.toString());
             System.out.println();
 
-            if (play.getCounter()!=0){
+            if (play.getCounter() != 0) {
                 System.out.println("Congratulations!!! You both win !!!");
-            }else {
+            } else {
                 System.out.println("Congratulations!!!   " + play.getNextPlayer().getNick() + "   wins !!!");
             }
         }
