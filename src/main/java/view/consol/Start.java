@@ -1,7 +1,6 @@
 package view.consol;
 
 import controller.Play;
-import controller.bugCatcher.IllegalMoveLenght;
 import controller.playPack.PlayerOrder;
 import model.Board;
 
