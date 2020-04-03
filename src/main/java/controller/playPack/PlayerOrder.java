@@ -15,7 +15,7 @@ public class PlayerOrder {
     public static void setPlayerOrder() {
         Random random = new Random();
 
-        if (random.nextInt(2) % 2 == 0) {
+        if (random.nextInt(100) % 2 == 0) {
             playerOrder[0] = Play.getPlayer1();
             playerOrder[1] = Play.getPlayer2();
         } else {

@@ -3,7 +3,6 @@ package controller.playPack;
 import controller.bugCatcher.IllegalBoardSize;
 import controller.bugCatcher.IllegalMoveLenght;
 import model.Board;
-import model.Decode;
 
 public class Move {
 

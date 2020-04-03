@@ -1,4 +1,4 @@
-package model;
+package controller.playPack;
 
 import controller.bugCatcher.IllegalMoveLenght;
 

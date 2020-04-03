@@ -1,4 +1,4 @@
-package view.consol;
+package controller.playPack;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

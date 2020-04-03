@@ -25,7 +25,7 @@ public class Win {
             if (((choiceField[0] - (lineSize - 1)) + i >= 0)
                     && ((choiceField[0] + i) <= (rowSize - 1))) {
                 for (int j = 0; j < lineSize; j++) {
-                    if (player.getChoiceField(((rowSize - choiceField[0] - 1) - i + j), choiceField[1]) != null) {
+                    if (player.getChoiceField(((lineSize - 1) - choiceField[0] - i + j), choiceField[1]) != null) {
                         sum += 1;
                     }
                     if (sum == lineSize) winner = true;
@@ -42,7 +42,7 @@ public class Win {
             if (((choiceField[1] - (lineSize - 1)) + i >= 0)
                     && ((choiceField[1] + i) <= (columnSize - 1))) {
                 for (int j = 0; j < lineSize; j++) {
-                    if (player.getChoiceField(choiceField[0], ((columnSize - choiceField[1] - 1) - i + j)) != null) {
+                    if (player.getChoiceField(choiceField[0], ((lineSize - 1) - choiceField[1] - i + j)) != null) {
                         sum += 1;
                     }
                     if (sum == lineSize) winner = true;
@@ -56,13 +56,15 @@ public class Win {
         int sum = 0;
         boolean winner = false;
         for (int i = 0; i < lineSize; i++) {
-            if (((choiceField[0] - (lineSize - 1)) + i >= 0)
-                    && ((choiceField[1] - (lineSize - 1)) + i >= 0)
-                    && ((choiceField[0] + i) <= (rowSize - 1))
-                    && ((choiceField[1] + i) <= (columnSize - 1))) {
+            if (
+                    ((choiceField[0] - (lineSize - 1)) + i >= 0)
+                            && ((choiceField[1] - (lineSize - 1)) + i >= 0)
+                            && ((choiceField[0] + i) <= (rowSize - 1))
+                            && ((choiceField[1] + i) <= (columnSize - 1))
+            ) {
                 for (int j = 0; j < lineSize; j++) {
-                    if (player.getChoiceField(((rowSize - choiceField[0] - 1) - i + j),
-                            ((columnSize - choiceField[1] - 1) - i + j)) != null) {
+                    if (player.getChoiceField(((lineSize - 1) - choiceField[0] - i + j),
+                            ((lineSize - 1) - choiceField[1] - i + j)) != null) {
                         sum += 1;
                     }
                     if (sum == lineSize) winner = true;
@@ -76,13 +78,15 @@ public class Win {
         int sum = 0;
         boolean winner = false;
         for (int i = 0; i < lineSize; i++) {
-            if (((choiceField[0] - (lineSize - 1)) + i >= 0)
-                    && ((choiceField[0] + (lineSize - 1) - i) <= (columnSize - 1))
-                    && ((choiceField[1] + i <= (rowSize - 1))
-                    && ((choiceField[1] - i) >= 0))) {
+            if (
+                    ((choiceField[0] - (lineSize - 1)) + i >= 0)
+                            && ((choiceField[1] + (lineSize - 1) - i) <= (columnSize - 1))
+                            && (choiceField[0] + i <= (rowSize - 1))
+                            && ((choiceField[1] - i) >= 0)
+            ) {
                 for (int j = 0; j < lineSize; j++) {
-                    if (player.getChoiceField(((rowSize - choiceField[0] - 1) + i - j),
-                            ((columnSize - choiceField[1] - 1) - i + j)) != null) {
+                    if (player.getChoiceField((lineSize - 1) - choiceField[0] - i + j,
+                            ((lineSize - 1) + choiceField[1] - i - j)) != null) {
                         sum += 1;
                     }
                     if (sum == lineSize) winner = true;
