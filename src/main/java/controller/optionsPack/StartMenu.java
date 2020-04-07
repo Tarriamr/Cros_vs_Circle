@@ -15,6 +15,8 @@ public class StartMenu {
                 new StartGame().quickStartGame();
                 break;
             case "2":
+                new StartGame().optionsStartGame();
+                break;
             case "3":
                 new ViewOptions().menuOptions();
                 break;

@@ -8,12 +8,29 @@ public class StartGame {
 
 
     public static void main(String[] args) {
+        new Game().basicOptions();
         new ViewStart().menuStart();
         System.out.print("\n");
     }
 
     public void quickStartGame() {
         game.basicOptions();
+        System.out.print("\n");
+        System.out.print("*************************************************************************************\n\n");
+        game.origin();
+        System.out.print("\n");
+        System.out.print("*************************************************************************************\n\n");
+        game.firstMove();
+        System.out.print("\n\n");
+        game.nextMove();
+        System.out.print("\n");
+        System.out.print("*************************************************************************************\n\n");
+        game.result();
+        System.out.print("\n");
+        System.out.print("*************************************************************************************\n\n");
+    }
+
+    public void optionsStartGame(){
         System.out.print("\n");
         System.out.print("*************************************************************************************\n\n");
         game.origin();
