@@ -4,7 +4,7 @@ import controller.Game;
 import view.consol.viewPack.ViewStart;
 
 public class StartGame {
-    private Game game = new Game();
+    private final Game game = new Game();
 
 
     public static void main(String[] args) {
@@ -30,7 +30,7 @@ public class StartGame {
         System.out.print("*************************************************************************************\n\n");
     }
 
-    public void optionsStartGame(){
+    public void optionsStartGame() {
         System.out.print("\n");
         System.out.print("*************************************************************************************\n\n");
         game.origin();

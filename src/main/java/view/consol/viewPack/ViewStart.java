@@ -21,11 +21,11 @@ public class ViewStart {
                         "*          - Board:     3 x 3                                                       *\n" +
                         "*          - Win:       3 symbol in line                                            *\n" +
                         "*      2. Getting started with matching options.                                    *\n" +
-                        "*          - Players:   " + new MenuElement().getElement(Play.getPlayer1().getNick().trim(),
+                        "*" + new MenuElement().getElement("Players:   ", Play.getPlayer1().getNick().trim(),
                         "vs", Play.getPlayer2().getNick().trim()) + "*\n" +
-                        "*          - Board:     " + new MenuElement().getElement(String.valueOf(Board.getSizeRow()),
+                        "*" + new MenuElement().getElement("Board:     ", String.valueOf(Board.getSizeRow()),
                         "x", String.valueOf(Board.getSizeColumn())) + "*\n" +
-                        "*          - Win:       " + new MenuElement().getElement(String.valueOf(3),
+                        "*" + new MenuElement().getElement("Win:       ", String.valueOf(3),
                         "symbols in line", "") + "*\n" +
                         "*      3. Options.                                                                  *\n" +
                         "*      4. Exit.                                                                     *\n" +

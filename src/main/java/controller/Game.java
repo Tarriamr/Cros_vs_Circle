@@ -18,11 +18,13 @@ public class Game {
         Play.getPlayer1().setPlaySymbol("X");
         Play.getPlayer2().setNick("Player_2");
         Play.getPlayer2().setPlaySymbol("O");
-        Board.setSizeRow(3);
-        Board.setSizeColumn(3);
+        Board.setSizeRow("3");
+        Board.setSizeColumn("3");
     }
 
     public void origin() {
+        Play.getPlayer1().setBoard();
+        Play.getPlayer2().setBoard();
         System.out.println("    The game will start:   " + PlayerOrder.getPlayerOrder()[0].getNick().toUpperCase());
     }
 
@@ -41,7 +43,7 @@ public class Game {
             System.out.println();
             play.setNextPlayer();
 
-            System.out.print(play.getNextPlayer().getNick().toUpperCase() + playerDialog.getPlayerTurn());
+            System.out.print("    " + play.getNextPlayer().getNick().toUpperCase() + playerDialog.getPlayerTurn());
             play.nextMove(scanner.next());
             counter = play.getCounter();
             System.out.print("\n\n");

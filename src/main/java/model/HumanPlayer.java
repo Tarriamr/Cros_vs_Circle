@@ -3,7 +3,7 @@ package model;
 public class HumanPlayer implements Player {
     private String nick = "";
     private String playSymbol = "";
-    private String[][] board = new String[Board.getSizeRow()][Board.getSizeColumn()];
+    private String[][] board ;
 
     public HumanPlayer(String nick, String playSymbol) {
         this.nick = nick;
@@ -44,4 +44,10 @@ public class HumanPlayer implements Player {
     public String[][] getBoard() {
         return board;
     }
+
+    @Override
+    public void setBoard() {
+        board = new String[Board.getSizeRow()][Board.getSizeColumn()];
+    }
+
 }

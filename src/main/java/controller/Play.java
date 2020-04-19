@@ -58,7 +58,7 @@ public class Play {
         Win win = new Win();
         int[] choice = bugMove(getNextPlayer(), playerMove);
         getNextPlayer().setChoiceField(choice[0], choice[1]);
-        if (win.getWin(getNextPlayer(), choice, Board.getSizeRow(), Board.getSizeColumn(), 3)) {
+        if (win.getWin(getNextPlayer(), choice, Board.getSizeRow(), Board.getSizeColumn())) {
             setCounter(0);
         }
         Board.setCounter(Board.getCounter() - 1);

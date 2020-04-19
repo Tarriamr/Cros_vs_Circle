@@ -1,20 +1,57 @@
 package controller.playPack;
 
+import controller.optionsPack.PlayOptions;
+import model.Board;
 import model.Player;
 
+import java.util.Scanner;
+
 public class Win {
+    private static int lineSize = 3;
     private Player player;
     private int[] choiceField;
     private int rowSize;
     private int columnSize;
-    private int lineSize;
 
-    public boolean getWin(Player player, int[] choiceField, int rowSize, int columnSize, int lineSize) {
+    public static int getLineSize() {
+        return lineSize;
+    }
+
+    public static void setLineSize(String lineSize) {
+        Win.lineSize = size(lineSize);
+    }
+
+    private static int size(String size) {
+        Scanner scanner = new Scanner(System.in);
+        int boardSize = 0;
+        try {
+            boardSize = Integer.parseInt(size);
+        } catch (IllegalArgumentException bug) {
+            System.out.print("    Incorrect data input.\n\n" +
+                    "    Choose the Play option number:   ");
+            new PlayOptions().menuPlayOptions(scanner.next());
+            System.out.println();
+        }
+
+        int rowColumn = 3;
+        rowColumn = Math.max(Board.getSizeRow(), Board.getSizeColumn());
+
+        if (boardSize >= 3 && boardSize <= rowColumn) {
+            return boardSize;
+        } else {
+            System.out.print("    Line length error.\n\n" +
+                    "    Choose the Play option number:   ");
+            new PlayOptions().menuPlayOptions(scanner.next());
+            System.out.println();
+            return 3;
+        }
+    }
+
+    public boolean getWin(Player player, int[] choiceField, int rowSize, int columnSize) {
         this.player = player;
         this.choiceField = choiceField;
         this.rowSize = rowSize;
         this.columnSize = columnSize;
-        this.lineSize = lineSize;
         return winNS() || winEW() || winNWSE() || winNESW();
     }
 

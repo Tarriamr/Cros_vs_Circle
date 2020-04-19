@@ -1,5 +1,6 @@
 package controller;
 
+import view.consol.viewPack.ViewPlayOptions;
 import view.consol.viewPack.ViewPlayersOptions;
 import view.consol.viewPack.ViewStart;
 
@@ -15,6 +16,8 @@ public class Options {
                 new ViewPlayersOptions().menuPlayersOptions();
                 break;
             case "2":
+                new ViewPlayOptions().menuPlayOptions();
+                break;
             case "3":
                 new ViewStart().menuStart();
                 break;

@@ -3,7 +3,7 @@ package view.consol;
 import model.Board;
 import model.Player;
 
-public class fieldContent {
+public class FieldContent {
 
     public String toString(Player player) {
         StringBuilder result = new StringBuilder();
