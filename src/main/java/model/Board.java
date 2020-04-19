@@ -45,10 +45,11 @@ public class Board {
     }
 
     public static String getBoardField(int row, int column) {
+        Board.setBoard();
         return board[row][column];
     }
 
-    public static void setBoard() {
+    private static void setBoard() {
         for (int i = 0; i < getSizeRow(); i++) {
             for (int j = 0; j < getSizeColumn(); j++) {
                 if (Play.getPlayer1().getBoard()[i][j] == null) {
