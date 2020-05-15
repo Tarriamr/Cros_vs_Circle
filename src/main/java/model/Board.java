@@ -44,12 +44,16 @@ public class Board {
         sizeBoard.put("sizeColumn", size(sizeColumn));
     }
 
+    public static void setBoard() {
+        Board.board = new String[getSizeRow()][getSizeColumn()];
+    }
+
     public static String getBoardField(int row, int column) {
-        Board.setBoard();
+        Board.setBoardField();
         return board[row][column];
     }
 
-    private static void setBoard() {
+    private static void setBoardField() {
         for (int i = 0; i < getSizeRow(); i++) {
             for (int j = 0; j < getSizeColumn(); j++) {
                 if (Play.getPlayer1().getBoard()[i][j] == null) {

@@ -3,6 +3,7 @@ package controller;
 import controller.playPack.PlayerDialog;
 import controller.playPack.PlayerOrder;
 import model.Board;
+import model.HumanPlayer;
 import view.consol.BoardField;
 
 import java.util.Scanner;
@@ -23,6 +24,9 @@ public class Game {
     }
 
     public void origin() {
+        Board.setBoard();
+        Play.getPlayer1().setBoard();
+        Play.getPlayer2().setBoard();
         System.out.println("    The game will start:   " + PlayerOrder.getPlayerOrder()[0].getNick().toUpperCase());
     }
 

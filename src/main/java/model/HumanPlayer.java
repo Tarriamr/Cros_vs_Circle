@@ -45,4 +45,9 @@ public class HumanPlayer implements Player {
         return board;
     }
 
+    @Override
+    public void setBoard() {
+        board = new String[Board.getSizeRow()][Board.getSizeColumn()];
+    }
+
 }

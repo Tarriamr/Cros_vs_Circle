@@ -15,4 +15,6 @@ public interface Player {
     void setChoiceField(int row, int column);
 
     String[][] getBoard();
+
+    void setBoard();
 }
